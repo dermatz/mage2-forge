@@ -1,0 +1,15 @@
+#!/bin/bash
+
+## Description: Run magento CLI inside the web container
+## Usage: magento [flags] [args]
+## Example: "ddev magento list" or "ddev magento maintenance:enable" or "ddev magento sampledata:reset"
+## ProjectTypes: magento2
+## ExecRaw: true
+
+if ! command -v magento/bin/magento >/dev/null; then
+  echo 'magento/bin/magento is not available in your installation.'
+  echo 'Please verify that the install script ran successfully.'
+  exit 1
+fi
+
+magento/bin/magento "$@"
